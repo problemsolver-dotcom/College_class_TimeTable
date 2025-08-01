@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A17's Timetable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body data-current-day="{{ current_day }}">
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1 class="logo" aria-label="Timetable Home">✨ TIME TABLE</h1>
+            </div>
+            <p class="subtitle">(MADE FOR A17)</p>
+            <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle dark or light mode">🌙 Dark Mode</button>
+        </header>
+
+        <main>
+            <div class="day-selector">
+                <label for="daySelect" class="sr-only">Select a day</label>
+                <select id="daySelect" onchange="updateSchedule()" aria-label="Select a day of the week">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+            <div id="schedule-container" role="region" aria-live="polite"></div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>

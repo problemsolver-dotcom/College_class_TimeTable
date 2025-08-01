@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ A17</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Link to the external CSS file using url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<!-- Pass the current day from Flask to a data attribute for JavaScript to access -->
+<body data-current-day="{{ current_day }}">
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1 class="logo">✨ TIME TABLE</h1>
+            </div>
+            <p class="subtitle">MADE FOR A17</p>
+            <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle theme">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <main>
+            <div class="day-selector">
+                <label for="daySelect" class="sr-only">Select a day</label>
+                <select id="daySelect" onchange="updateSchedule()" aria-label="Select day of the week">
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+
+            <!-- The schedule content will be dynamically inserted here by JavaScript -->
+            <div id="schedule-container" role="region" aria-live="polite">
+                <!-- Loading state can be placed here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Link to the external JavaScript file using url_for. 'defer' ensures it runs after the HTML is parsed. -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</body>
+</html>
