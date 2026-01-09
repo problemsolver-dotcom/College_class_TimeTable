@@ -9,7 +9,7 @@ TIMETABLE_DATA = {
             "time": "10:00AM – 10:50AM",
             "subject": "Principles of Management",
             "type": "Lecture",
-            "location": "G-3"
+            "location": "G-4"
         },
         {
             "time": "11:00AM – 11:50AM",
