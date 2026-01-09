@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A17's Timetable</title>
+
+  <!-- Logo -->
+  <link rel="icon" type="image/png" sizes="256x256"
+        href="{{ url_for('static', filename='logo.png') }}">
+  <link rel="shortcut icon"
+        href="{{ url_for('static', filename='logo.png') }}">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+  <!-- Particles.js (desktop only usage below) -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    #particles-js {
+      position: fixed;
+      inset: 0;
+      z-index: -10;
+      pointer-events: none;
+    }
+
+    /* Screen-reader only utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body data-current-day="{{ current_day }}">
+  <!-- Background particles -->
+  <div id="particles-js"></div>
+
+  <div class="page-wrapper">
+    <div class="container">
+      <header>
+        <div class="brand">
+          <h1 class="logo" aria-label="Timetable Home">✨ TIME TABLE ✨</h1>
+        </div>
+
+        <p class="subtitle">Batch - (A17)</p>
+
+        <!-- Theme toggle (NO inline onclick) -->
+        <button class="theme-toggle" aria-label="Toggle dark or light mode">
+          ☀️ Light Mode
+        </button>
+      </header>
+
+      <main>
+        <div class="day-selector">
+          <label for="daySelect" class="sr-only">Select a day</label>
+          <select id="daySelect" aria-label="Select a day of the week">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+        </div>
+
+        <div id="schedule-container" role="region" aria-live="polite"></div>
+      </main>
+    </div>
+
+    <footer class="site-credit">
+      <p>Made by Bhavya Jain © EVEN 2026</p>
+    </footer>
+  </div>
+
+  <!-- Timetable logic -->
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+  <!-- Particles.js (DESKTOP ONLY) -->
+  <script>
+    if (window.innerWidth > 768) {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 80 },
+          color: { value: "#64ffda" },
+          shape: { type: "circle" },
+          opacity: { value: 0.15 },
+          size: { value: 3 },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#64ffda",
+            opacity: 0.1,
+            width: 1
+          },
+          move: { enable: true, speed: 1 }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: "grab" },
+            onclick: { enable: true, mode: "push" }
+          },
+          modes: {
+            grab: { distance: 140, line_linked: { opacity: 0.25 } },
+            push: { particles_nb: 4 }
+          }
+        },
+        retina_detect: true
+      });
+    }
+  </script>
+</body>
+</html>
