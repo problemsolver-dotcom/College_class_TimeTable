@@ -1,9 +1,6 @@
 let timetable = {};
 
-<<<<<<< HEAD
 /* ---------- Icons ---------- */
-=======
->>>>>>> dcfcb087330f5a23f5ebf300aba171da843aa11b
 function getTypeIcon(type) {
     const icons = {
         'Lecture': '📖',
@@ -13,10 +10,7 @@ function getTypeIcon(type) {
     return icons[type] || '📚';
 }
 
-<<<<<<< HEAD
 /* ---------- Schedule Update ---------- */
-=======
->>>>>>> dcfcb087330f5a23f5ebf300aba171da843aa11b
 function updateSchedule() {
     const daySelect = document.getElementById('daySelect');
     const container = document.getElementById('schedule-container');
@@ -42,17 +36,12 @@ function updateSchedule() {
             <div class="time">${cls.time}</div>
             <div class="details">
                 <h3>${cls.subject}</h3>
-<<<<<<< HEAD
                 <p>${getTypeIcon(cls.type)} ${cls.type} | 📍 ${cls.location}</p>
-=======
-                <p><span>${getTypeIcon(cls.type)}</span> ${cls.type} | 📍 ${cls.location}</p>
->>>>>>> dcfcb087330f5a23f5ebf300aba171da843aa11b
             </div>
         </div>
     `).join('');
 }
 
-<<<<<<< HEAD
 /* ---------- Theme Toggle ---------- */
 function setTheme(theme) {
     const html = document.documentElement;
@@ -88,20 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     /* ----- Load Timetable ----- */
-=======
-function toggleTheme() {
-    const html = document.documentElement;
-    const button = document.querySelector('.theme-toggle');
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    button.textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const daySelect = document.getElementById('daySelect');
-    const container = document.getElementById('schedule-container');
-
->>>>>>> dcfcb087330f5a23f5ebf300aba171da843aa11b
     try {
         container.innerHTML = '<p class="loading">Loading your schedule...</p>';
         const response = await fetch('/api/timetable');
@@ -115,7 +90,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateSchedule();
     } catch (err) {
         console.error(err);
-<<<<<<< HEAD
         container.innerHTML =
             '<p class="error">Failed to load timetable. Try refreshing.</p>';
     }
@@ -124,31 +98,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     daySelect.addEventListener('change', updateSchedule);
 
     /* ----- Keyboard Navigation ----- */
-=======
-        container.innerHTML = '<p class="error">Failed to load timetable. Try refreshing.</p>';
-    }
-
-    daySelect.addEventListener('change', updateSchedule);
-
->>>>>>> dcfcb087330f5a23f5ebf300aba171da843aa11b
     document.addEventListener('keydown', e => {
         if (e.target === daySelect) return;
 
         const index = daySelect.selectedIndex;
         if (e.key === 'ArrowLeft') {
-<<<<<<< HEAD
             daySelect.selectedIndex =
                 (index - 1 + daySelect.length) % daySelect.length;
             updateSchedule();
         } else if (e.key === 'ArrowRight') {
             daySelect.selectedIndex =
                 (index + 1) % daySelect.length;
-=======
-            daySelect.selectedIndex = (index - 1 + daySelect.length) % daySelect.length;
-            updateSchedule();
-        } else if (e.key === 'ArrowRight') {
-            daySelect.selectedIndex = (index + 1) % daySelect.length;
->>>>>>> dcfcb087330f5a23f5ebf300aba171da843aa11b
             updateSchedule();
         }
     });
